@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/style.css">
+    <title>HTML Form Validation With PristineJs</title>
+</head>
+
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">HTML Form Validation With PristineJs</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <!-- FORM VALIDATION -->
+        <div class="my-4">
+            <h2>
+                Form validation
+            </h2>
+
+            <form novalidate id="form1">
+                <div class="mb-3">
+                    <label for="form1-email" class="form-label">Email address</label>
+                    <input required type="email" class="form-control" id="form1-email" placeholder="Enter your email">
+                </div>
+                <div class="mb-3">
+                    <label for="form1-message" class="form-label">Message</label>
+                    <textarea required minlength="5" class="form-control" id="form1-message" rows="3"></textarea>
+                </div>
+
+                <button class="btn btn-primary w-100">
+                    Submit
+                </button>
+            </form>
+        </div>
+        <!-- FORM VALIDATION -->
+
+
+        <!-- BUILT IN VALIDATION -->
+        <div class="my-4">
+            <h2>
+                Built in validators
+            </h2>
+
+            <form novalidate autocomplete="off" id="form2">
+
+                <div class="mb-3">
+                    <label for="form2-age" class="form-label">Age</label>
+                    <input required data-pristine-type="integer" class="form-control" id="form2-age"
+                        placeholder="Enter your age">
+                </div>
+
+                <div class="mb-3">
+                    <label for="form2-email" class="form-label">Email address</label>
+                    <input autocomplete="off" required data-pristine-type="email" class="form-control" id="form2-email"
+                        placeholder="Enter your email">
+                </div>
+
+                <div class="mb-3">
+                    <label for="form2-email" class="form-label">Password</label>
+                    <input autocomplete="off" required type="password" class="form-control" id="form2-password"
+                        placeholder="Enter your password">
+                </div>
+
+                <div class="mb-3">
+                    <label for="form2-confirmPassword" class="form-label">Confirm Password</label>
+                    <input autocomplete="off" required type="password" data-pristine-equals="#form2-password"
+                        class="form-control" id="form2-confirmPassword" placeholder="Confirm your password">
+                </div>
+
+                <button class="btn btn-primary w-100">
+                    Submit
+                </button>
+            </form>
+        </div>
+        <!-- BUILT IN VALIDATION -->
+
+        <!-- CUSTOM VALIDATION -->
+        <div class="my-4">
+            <h2>
+                Custom validation
+            </h2>
+
+            <form autocomplete="off" id="form3">
+                <div class="mb-3">
+                    <label for="form3-name" class="form-label">Name</label>
+                    <input data-pristine-required data-pristine-name class="form-control" id="form3-name"
+                        placeholder="Enter your name">
+                </div>
+
+                <div class="mb-3">
+                    <label for="form3-age" class="form-label">Age: <b id="form3-age-slot"></b></label>
+                    <input data-pristine-required type="range" value="0" class="form-range" id="form3-age">
+                </div>
+
+                <button class="btn btn-primary w-100">
+                    Submit
+                </button>
+            </form>
+        </div>
+        <!-- CUSTOM VALIDATION -->
+
+        <!-- CUSTOM ERROR MESSAGE -->
+        <div class="my-4">
+            <h2>
+                Custom error messages
+            </h2>
+
+            <form id="form4">
+                <div class="row mb-3">
+                    <div class="form-group mb-0 col">
+                        <label for="form4-firstName" class="form-label">First Name</label>
+                        <input class="form-control" data-pristine-required data-pristine-name
+                            data-pristine-required-message="First name is required"
+                            data-pristine-name-message="First name cann't be more than 20 characters"
+                            placeholder="Enter your first name" id="form4-firstName">
+                    </div>
+
+                    <div class="form-group mb-0 col">
+                        <label for="form4-lastName" class="form-label">Last Name</label>
+                        <input data-pristine-required data-pristine-required-message="Last name is required"
+                            class="form-control" placeholder="Enter your last name" id="form4-lastName">
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="form4-sex" class="form-label">Sex</label>
+                    <div class="d-flex">
+                        <label class="form-label me-4">
+                            <input data-pristine-required type="radio" value="male" name="form4-sex">
+                            Male
+                        </label>
+                        <label class="form-label">
+                            <input data-pristine-required type="radio" value="female" name="form4-sex">
+                            Female
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="form4-email" class="form-label">Email address</label>
+                    <input data-pristine-required data-pristine-required-message="Email address is required"
+                        data-pristine-type="email" data-pristine-email-message="Please enter a valid email address"
+                        class="form-control" id="form4-email" placeholder="Enter your email">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="form4-password" class="form-label">Password</label>
+                    <input data-pristine-required data-pristine-password
+                        data-pristine-required-message="Please enter the password" class="form-control"
+                        id="form4-password">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="form4-confirmPassword" class="form-label">Confirm Password</label>
+                    <input data-pristine-equals="#form4-password" data-pristine-equals-message="Passwords do not match"
+                        class="form-control" id="form4-confirmPassword">
+                </div>
+
+                <button class="btn btn-primary w-100 mt-4">
+                    Submit
+                </button>
+            </form>
+        </div>
+        <!-- CUSTOM ERROR MESSAGE -->
+
+        <!-- CUSTOM VALIDATION TO A FIELD -->
+        <div class="my-4">
+            <h2>
+                Custom validation to a field
+            </h2>
+
+            <form id="form5">
+                <div class="form-group mb-3">
+                    <label for="form4-message" class="form-label">Message</label>
+                    <textarea data-pristine-required data-pristine-required-message="Message is required" data-pristine-message minlength="5"
+                        class="form-control" id="form5-message" rows="3"></textarea>
+                </div>
+
+                <button class="btn btn-primary w-100 mt-4">
+                    Submit
+                </button>
+            </form>
+        </div>
+        <!-- CUSTOM VALIDATION TO A FIELD -->
+
+
+
+    </main>
+
+    <footer class="bg-dark p-4 mt-auto text-center text-white">
+        Built by <a href="https://melvinmanni.tech" target="_blank">Melvin Manni</a>
+    </footer>
+
+    <script src="./src/pristine.min.js"></script>
+    <script src="./src/app.js"></script>
+</body>
+
+</html>
